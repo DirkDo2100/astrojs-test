@@ -14,21 +14,24 @@ const { Content } = await post.render();
 
 const title = post.data.title as string;
 const description = post.data.description as string;
-const image = post.data.image as string | undefined;
-const canonical = `https://example.com/blog/${post.slug}/`;
-const absoluteImageUrl = image
+
+// Canonical URL and default social image
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const absoluteImageUrl = new URL("/favicon.svg", Astro.site).toString();
+
 ---
 
 <html lang="vi">
   <head>
     <meta charset="utf-8" />
+    <link rel="canonical" href={canonical} />
 
     <!-- OG -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-<meta property="og:image" content={absoluteImageUrl} />
+    <meta property="og:image" content={absoluteImageUrl} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
