@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", (p) => !p.data.draft))
+  .sort((a, b) => +b.data.date - +a.data.date);
+---
+
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blog</title>
+    <meta name="description" content="Danh sách bài viết" />
+  </head>
+  <body>
+    <main class="max-w-3xl mx-auto p-4">
+      <h1>Blog</h1>
+      <p>Tổng số bài: {posts.length}</p>
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            <small> — {post.data.date.toDateString()}</small>
+            <p>{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
