@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime.D_zvdyIk.js";import{r}from"./index.RH_Wq4ov.js";function c(){const[n,o]=r.useState(0);return t.jsxs("div",{children:[t.jsxs("p",{children:["Count: ",n]}),t.jsx("button",{onClick:()=>o(n+1),children:"Increment"}),t.jsx("button",{onClick:()=>o(n-1),children:"Sub"})]})}export{c as default};

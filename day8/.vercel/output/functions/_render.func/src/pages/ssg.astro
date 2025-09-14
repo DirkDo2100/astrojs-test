@@ -1,0 +1,19 @@
+---
+export const prerender = false; // trang này cũng chạy mỗi request
+
+// Luôn dùng origin của request hiện tại (Astro.url)
+const res = await fetch(new URL('/api/time.json', Astro.url), {
+  cache: 'no-store',
+});
+const { now } = await res.json();
+---
+
+<html lang="vi">
+  <head><meta charset="utf-8" /><title>SSR Demo</title></head>
+  <body class="max-w-prose mx-auto p-6">
+    <h1>SSR Page</h1>
+    <p>Thời gian server trả về: <strong>{now}</strong></p>
+    <p>Reload trang sẽ thấy giá trị thay đổi (đang SSR).</p>
+    <a href="/api/time.json">Xem JSON trực tiếp</a>
+  </body>
+</html>

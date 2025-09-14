@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime.D_zvdyIk.js";import{r as o}from"./index.RH_Wq4ov.js";function c(){const[r,s]=o.useState([]);return o.useEffect(()=>{fetch("/api/posts.json").then(t=>t.json()).then(t=>s(t)).catch(()=>s([]))},[]),e.jsx("ul",{children:r.map(t=>e.jsx("li",{children:t.title},t.slug))})}export{c as default};
