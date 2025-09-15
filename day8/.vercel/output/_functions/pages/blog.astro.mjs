@@ -1,6 +1,6 @@
 import { a as createComponent, r as renderHead, d as renderComponent, b as addAttribute, e as renderTemplate } from '../chunks/astro/server_BmAgNbLp.mjs';
 import 'kleur/colors';
-import { g as getCollection } from '../chunks/_astro_content_BthXxtzZ.mjs';
+import { g as getCollection } from '../chunks/_astro_content_OoMGA-6V.mjs';
 import { _ as __ASTRO_IMAGE_IMPORT_Z1BH5gD } from '../chunks/hero_CSzegqYF.mjs';
 import '../chunks/index_MaT6fT73.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_woY50bfE.mjs';

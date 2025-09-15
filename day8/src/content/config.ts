@@ -10,6 +10,7 @@ const blog = defineCollection({
       draft: z.boolean().default(false),
       heroImage: image().optional(), // ảnh minh họa
       tags: z.array(z.string()).optional(), // thẻ
+      category: z.string().optional(), // danh mục
     }),
 });
 

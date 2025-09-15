@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+
+// Generate static paginated pages even in SSR builds
+export const prerender = true;
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("blog", (p) => !p.data.draft))
+    .sort((a, b) => +b.data.date - +a.data.date);
+
+  return paginate(posts, { pageSize: 5 }); // mỗi trang 5 bài
+}
+
+const { page } = Astro.props;
+---
+
+<h1>Blog</h1>
+
+<ul>
+  {page.data.map((post) => (
+    <li>
+      <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+      <p>{post.data.description}</p>
+    </li>
+  ))}
+</ul>
+
+<nav>
+  {page.url.prev && <a href={page.url.prev}>← Trang trước</a>}
+  <span>Trang {page.currentPage} / {page.lastPage}</span>
+  {page.url.next && <a href={page.url.next}>Trang sau →</a>}
+</nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  </style>

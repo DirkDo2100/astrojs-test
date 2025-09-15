@@ -1,6 +1,9 @@
 ---
 import { getCollection, getEntryBySlug } from "astro:content";
 
+// Ensure static prerender so getStaticPaths() is honored
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog", (p) => !p.data.draft);
   return posts.map((p) => ({ params: { slug: p.slug } }));
